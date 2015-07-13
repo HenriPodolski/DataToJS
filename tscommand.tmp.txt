@@ -1,0 +1,1 @@
+"src/ConverterInterface.ts" "src/DataFormat.ts" "src/JSONConverter.ts" "src/JXONConverter.ts" "src/YAMLConverter.ts" --sourcemap --removeComments --target ES5 --module commonjs
