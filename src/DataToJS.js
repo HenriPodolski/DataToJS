@@ -1,20 +1,21 @@
-import JSON = require('JSONConverter');
-import YAML = require('YAMLConverter');
-import JXON = require('JXONConverter');
+import JSONConverter from './JSONConverter';
+import JXONConverter from './JXONConverter';
+import YAMLConverter from './YAMLConverter';
 
-var jsonConverter = new JSON.Converter();
-var yamlConverter = new YAML.Converter();
-var jxonConverter = new JXON.Converter();
+let jsonConverter = new JSONConverter();
+let jxonConverter = new JXONConverter();
+let yamlConverter = new YAMLConverter();
 
-export = DataFormat;
+export default class DataToJS {
 
-class DataFormat {
+    constructor() {
 
-    private _data:string = '';
+        this._data = '';
 
-    private _obj = null;
+        this._obj = null;
+    }
 
-    public toJS(data:string):any {
+    convert(data) {
 
         this.obj = null;
 
@@ -23,9 +24,9 @@ class DataFormat {
         return this.convertDataType();
     }
 
-    public convertDataType():any {
+    convertDataType() {
 
-        var convertedData:any;
+        var convertedData;
 
         if(!convertedData && jsonConverter.isValid(this.data)) {
             convertedData = jsonConverter.result;
@@ -48,22 +49,22 @@ class DataFormat {
         return this.obj;
     }
 
-    public set data(data:string) {
+    set data(data) {
 
         this._data = data;
     }
 
-    public get data():string {
+    get data() {
 
         return this._data;
     }
 
-    public set obj(obj:any) {
+    set obj(obj) {
 
         this._obj = obj;
     }
 
-    public get obj():any {
+    get obj() {
 
         return this._obj;
     }

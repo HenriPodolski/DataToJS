@@ -1,27 +1,21 @@
 {
-  "name": "Angular-TS-Browserify-Example",
-  "license": "MIT",
-  "version": "0.0.1",
-  "private": true,
+  "name": "Data2JS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^6.1.3",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.8.0",
+    "grunt-contrib-watch": "^0.6.1"
   },
   "dependencies": {
-    "angular": "latest",
-    "js-yaml": "^3.3.1",
-    "jxon": "^1.4.0"
-  },
-  "devDependencies": {
-    "browserify": "~2.36.1",
-    "grunt": "~0.4.2",
-    "grunt-browserify": "~1.2.11",
-    "grunt-cli": "~0.1.11",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-connect": "latest",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-phantomjs": "~0.3.1",
-    "grunt-mocha-test": "~0.8.1",
-    "grunt-ts": "~1.4.5",
-    "mocha": "~1.15.1"
+    "jxon": "^1.4.0",
+    "yamljs": "^0.2.3"
   }
 }

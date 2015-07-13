@@ -1,66 +1,39 @@
-/**
- * This file is part of the default package recommendation.
- * (c) 2013 Timo Lindemann, Sol Venetus Software GmbH
- *
- */
-
-module.exports = function (grunt) {
+module.exports = function(grunt){
     grunt.initConfig({
-        ts: {
-            options: {
-                compile: true,
-                target: "es5",
-                module: "commonjs",
-                sourceMap: true
-            },
-            build: {
-                src: ["src/*.ts"]
-            }
-        }, clean: {
-            buildclean: ["src/*.js", "src/*.map"],
-            browser: ["browser/build.js"]
-        }, browserify: {
-            build: {
+        browserify:{
+            dist:{
+                options:{
+                    transform:[
+                        [
+                            'babelify',
+                            {
+                                'loose': 'all',
+                                'sourceMaps': true,
+                                'modules': 'common'
+                            }
+
+                        ]
+                    ]
+                },
                 files: {
-                    "browser/build.js": ["browser/main.js"]
+                    './dist/main.js': ['./src/main.js']
                 }
             }
         },
-        connect: {
-            default: {
+        watch:{
+            scripts:{
                 options: {
-                    port: 8000,
-                    base: "./browser",
-                    debug: true,
-                    keepalive: true
-                }
-            }
-        },
-        watch: {
-            "ts-scripts": {
-                files: ["src/**/*.ts", "browser/main.js"],
-                tasks: ["build-ts"],
-                options: {
-                    spawn: false,
-                }
+                    spawn: false
+                },
+                files:['./src/**/*.js'],
+                tasks:['browserify']
             }
         }
     });
 
-    grunt.loadNpmTasks("grunt-ts");
-    grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-browserify");
-    grunt.loadNpmTasks("grunt-contrib-connect");
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.registerTask("build-ts", [
-        "clean:buildclean",
-        "clean:browser",
-        "ts:build",
-        "browserify:build"
-    ]);
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask("default", [
-        "build-ts",
-        "watch"
-    ]);
+    grunt.registerTask('default', ['browserify', 'watch']);
+    grunt.registerTask('build', ['browserify']);
 };

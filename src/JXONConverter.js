@@ -1,32 +1,26 @@
+import JXON from 'JXON';
+import BaseDataConverter from './BaseDataConverter';
 
-var JXONLib = 'JXON';
+export default class JXONConverter extends BaseDataConverter {
 
-console.log(JXONLib);
+    isValid(data) {
 
-var Converter = (function () {
-    function Converter() {
-    }
-    Converter.prototype.isValid = function (data) {
-        try  {
+        try {
+
+            let res = JXON.stringToJs(data);
+
+            // handle JXON HTML error output
+            if(res && res.html && res.html.body) {
+                throw new Error('JXONError');
+            }
+
+            this.result = res;
+
             return true;
-        } catch (e) {
+
+        } catch(e) {
+
             return false;
         }
-    };
-
-
-    Object.defineProperty(Converter.prototype, "result", {
-        get: function () {
-            return this._result;
-        },
-        set: function (res) {
-            this._result = res;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Converter;
-})();
-exports.Converter = Converter;
-
-//# sourceMappingURL=JXONConverter.js.map
+    }
+}

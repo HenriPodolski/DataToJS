@@ -1,10 +1,11 @@
-import ConverterInterface = require('ConverterInterface');
+export default class BaseDataConverter {
 
-export class Converter {
+    constructor() {
 
-    private _result:any;
+        this._result;
+    }
 
-    isValid(data:string):boolean {
+    isValid(data) {
         return false;
     }
 
