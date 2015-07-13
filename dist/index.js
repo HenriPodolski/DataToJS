@@ -2220,19 +2220,13 @@ var DataToJS = (function () {
             convertedData = jsonConverter.result;
         }
 
-        console.info('after json', convertedData);
-
         if (!convertedData && jxonConverter.isValid(this.data)) {
             convertedData = jxonConverter.result;
         }
 
-        console.info('after jxon', convertedData);
-
         if (!convertedData && yamlConverter.isValid(this.data)) {
             convertedData = yamlConverter.result;
         }
-
-        console.info('after yaml', convertedData);
 
         if (!convertedData) {
             throw new Error('Error: Unexpected data type.');
@@ -2342,6 +2336,7 @@ var JXONConverter = (function (_BaseDataConverter) {
 
                                     var res = _JXON2['default'].stringToJs(data);
 
+                                    // handle JXON HTML error output
                                     if (res && res.html && res.html.body) {
                                                 throw new Error('JXONError');
                                     }
