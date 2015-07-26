@@ -12102,6 +12102,7 @@ var JSONConverter = (function (_BaseDataConverter) {
             this.result = JSON.parse(data);
             return true;
         } catch (e) {
+            console.error(e);
             return false;
         }
     };
@@ -12196,6 +12197,7 @@ var YAMLConverter = (function (_BaseDataConverter) {
             this.result = _yamljs2['default'].parse(data);
             return true;
         } catch (e) {
+            console.error(e);
             return false;
         }
     };

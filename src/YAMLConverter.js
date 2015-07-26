@@ -8,6 +8,7 @@ export default class YAMLConverter extends BaseDataConverter {
             this.result = YAML.parse(data);
             return true;
         } catch(e) {
+            console.error(e);
             return false;
         }
     }
