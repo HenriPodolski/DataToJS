@@ -9,7 +9,6 @@ let dataToJS = new DataToJS();
 let testJSON = dataToJS.convert('{"format": "JSON"}');
 let testJXON = dataToJS.convert('<format>XML</format>');
 let testYAML = dataToJS.convert('format: YAML');
-let testJXON2 = dataToJS.convert('<format default="true">XML</format>');
 
 
-console.log(testJSON, testJXON, testYAML, testJXON2);
+console.log(testJSON, testJXON, testYAML);

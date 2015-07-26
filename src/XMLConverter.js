@@ -18,7 +18,6 @@ export default class XMLConverter extends BaseDataConverter {
             return true;
 
         } catch(e) {
-            console.error(e);
             return false;
         }
     }

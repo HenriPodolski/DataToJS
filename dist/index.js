@@ -12102,7 +12102,7 @@ var JSONConverter = (function (_BaseDataConverter) {
             this.result = JSON.parse(data);
             return true;
         } catch (e) {
-            console.error(e);
+
             return false;
         }
     };
@@ -12154,7 +12154,6 @@ var XMLConverter = (function (_BaseDataConverter) {
 
                                     return true;
                         } catch (e) {
-                                    console.error(e);
                                     return false;
                         }
             };
@@ -12197,7 +12196,6 @@ var YAMLConverter = (function (_BaseDataConverter) {
             this.result = _yamljs2['default'].parse(data);
             return true;
         } catch (e) {
-            console.error(e);
             return false;
         }
     };
@@ -12225,7 +12223,6 @@ var dataToJS = new _DataToJS2['default']();
 var testJSON = dataToJS.convert('{"format": "JSON"}');
 var testJXON = dataToJS.convert('<format>XML</format>');
 var testYAML = dataToJS.convert('format: YAML');
-var testJXON2 = dataToJS.convert('<format default="true">XML</format>');
 
-console.log(testJSON, testJXON, testYAML, testJXON2);
+console.log(testJSON, testJXON, testYAML);
 },{"./DataToJS":114}]},{},[118]);

@@ -7,7 +7,7 @@ export default class JSONConverter extends BaseDataConverter {
             this.result = JSON.parse(data);
             return true;
         } catch(e) {
-            console.error(e);
+
             return false;
         }
     }
