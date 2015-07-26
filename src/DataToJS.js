@@ -1,9 +1,9 @@
 import JSONConverter from './JSONConverter';
-import JXONConverter from './JXONConverter';
+import XMLConverter from './XMLConverter';
 import YAMLConverter from './YAMLConverter';
 
 let jsonConverter = new JSONConverter();
-let jxonConverter = new JXONConverter();
+let xmlConverter = new XMLConverter();
 let yamlConverter = new YAMLConverter();
 
 export default class DataToJS {
@@ -32,8 +32,8 @@ export default class DataToJS {
             convertedData = jsonConverter.result;
         }
 
-        if(!convertedData && jxonConverter.isValid(this.data)) {
-            convertedData = jxonConverter.result;
+        if(!convertedData && xmlConverter.isValid(this.data)) {
+            convertedData = xmlConverter.result;
         }
 
         if(!convertedData && yamlConverter.isValid(this.data)) {
